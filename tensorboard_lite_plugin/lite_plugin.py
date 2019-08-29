@@ -203,8 +203,10 @@ class LitePlugin(base_plugin.TBPlugin):
     return http_util.Respond(request, supported_ops, "application/json")
 
   def frontend_metadata(self):
-    metadata = super(LitePlugin, self).frontend_metadata()
-    return metadata._replace(
+    return base_plugin.FrontendMetadata(
         tab_name=TAB_NAME,
         es_module_path="/index.js",
+        disable_reload=False,
+        remove_dom=False,
+        element_name=None,
     )
